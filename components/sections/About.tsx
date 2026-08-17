@@ -6,22 +6,28 @@ export default function About() {
     <section id="about" className="border-b border-border bg-surface">
       <div className="mx-auto grid max-w-7xl gap-14 px-6 py-24 md:grid-cols-2 md:gap-16 md:px-10 md:py-32">
         <Reveal>
-          <PlaceholderPhoto
-            label="Founder / Crew Photography"
-            src="/images/patio-pool-kitchen.jpg"
-            alt="Completed patio and outdoor kitchen build"
-            className="aspect-[4/5] w-full"
-          />
+          <div className="relative">
+            <PlaceholderPhoto
+              label="Founder / Crew Photography"
+              src="/images/patio-pool-kitchen.jpg"
+              alt="Completed patio and outdoor kitchen build"
+              className="aspect-[4/5] w-full"
+            />
+            <div className="absolute -bottom-6 left-6 border border-border bg-surface-elevated px-5 py-4">
+              <p className="font-display text-2xl text-text-primary">Est. 2011</p>
+              <p className="mt-0.5 text-xs text-text-muted">Hillsborough County, FL</p>
+            </div>
+          </div>
         </Reveal>
 
         <Reveal delay={0.1}>
           <p className="font-mono-label text-[11px] text-accent">
             Our Story
           </p>
-          <h2 className="font-display mt-4 text-4xl uppercase leading-[0.95] text-text-primary md:text-5xl">
-            Founded on a pickup truck. Built on referrals.
+          <h2 className="font-display mt-4 text-4xl leading-[1.05] text-text-primary md:text-5xl">
+            Founded on a pickup truck. <em className="italic">Built on referrals.</em>
           </h2>
-          <div className="mt-6 flex flex-col gap-4 text-sm leading-relaxed text-text-secondary md:text-base">
+          <div className="mt-8 flex flex-col gap-4 text-sm leading-relaxed text-text-secondary md:text-base">
             <p>
               LERTIV was founded in 2011 by Adrian Veltri, a Hillsborough
               County tradesman who started out loading pavers and digging

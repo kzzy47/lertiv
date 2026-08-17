@@ -26,16 +26,19 @@ export default function Testimonials() {
           <p className="font-mono-label text-[11px] text-accent">
             What Customers Say
           </p>
+          <h2 className="font-display mt-4 max-w-xl text-4xl leading-[1.05] text-text-primary md:text-5xl">
+            Word of mouth is <em className="italic">our marketing.</em>
+          </h2>
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10">
+        <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
           {QUOTES.map((item, i) => (
             <Reveal key={item.name} delay={i * 0.08}>
-              <blockquote className="flex h-full flex-col justify-between border-l-2 border-accent pl-6">
-                <p className="text-base leading-relaxed text-text-primary">
+              <blockquote className="flex h-full flex-col border-t border-border pt-6">
+                <p className="font-display text-lg leading-snug text-text-primary italic">
                   &ldquo;{item.quote}&rdquo;
                 </p>
-                <cite className="mt-6 block text-xs not-italic uppercase tracking-[0.1em] text-text-muted">
+                <cite className="mt-6 text-xs not-italic uppercase tracking-[0.1em] text-text-muted">
                   {item.name}
                 </cite>
               </blockquote>

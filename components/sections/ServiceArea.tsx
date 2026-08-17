@@ -26,8 +26,8 @@ export default function ServiceArea() {
           <p className="font-mono-label text-[11px] text-accent">
             Where We Work
           </p>
-          <h2 className="font-display mt-4 max-w-2xl text-4xl uppercase leading-[0.95] text-text-primary md:text-5xl">
-            Tampa Bay and Central Florida.
+          <h2 className="font-display mt-4 max-w-2xl text-4xl leading-[1.05] text-text-primary md:text-5xl">
+            Tampa Bay and <em className="italic">Central Florida.</em>
           </h2>
         </Reveal>
 
@@ -36,7 +36,7 @@ export default function ServiceArea() {
             {AREAS.map((area) => (
               <span
                 key={area}
-                className="rounded-sm border border-border px-4 py-2 text-sm text-text-secondary"
+                className="border border-border px-4 py-2 text-sm text-text-secondary transition-colors hover:border-accent hover:text-text-primary"
               >
                 {area}
               </span>

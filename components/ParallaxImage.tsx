@@ -49,9 +49,12 @@ export default function ParallaxImage({
         </motion.div>
       </motion.div>
       {overlay && (
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/35 to-transparent" />
+        <>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-black/35" />
+          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/45 to-transparent" />
+        </>
       )}
-      <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_90px_0px_rgba(0,0,0,0.25)]" />
+      <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_140px_0px_rgba(0,0,0,0.45)]" />
     </div>
   );
 }
