@@ -1,6 +1,6 @@
 import Reveal from "@/components/Reveal";
 import SplitReveal from "@/components/SplitReveal";
-import ServiceAreaMap from "@/components/ServiceAreaMap";
+import ServiceAreaMap from "@/components/ServiceAreaMapClient";
 
 export default function ServiceArea() {
   return (
