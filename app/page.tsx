@@ -5,6 +5,7 @@ import TrustBar from "@/components/sections/TrustBar";
 import Services from "@/components/sections/Services";
 import About from "@/components/sections/About";
 import Work from "@/components/sections/Work";
+import Transformation from "@/components/sections/Transformation";
 import Testimonials from "@/components/sections/Testimonials";
 import ServiceArea from "@/components/sections/ServiceArea";
 import Contact from "@/components/sections/Contact";
@@ -19,6 +20,7 @@ export default function Home() {
         <Services />
         <About />
         <Work />
+        <Transformation />
         <Testimonials />
         <ServiceArea />
         <Contact />

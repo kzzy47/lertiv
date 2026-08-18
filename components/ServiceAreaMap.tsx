@@ -1,106 +1,127 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { MapContainer, TileLayer, CircleMarker, Tooltip, useMap, useMapEvents } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 type Area = {
   name: string;
-  x: number;
-  y: number;
+  lat: number;
+  lng: number;
+  hq?: boolean;
 };
 
+const TAMPA: [number, number] = [27.9506, -82.4572];
+const OVERVIEW_ZOOM = 9;
+const FOCUS_ZOOM = 12;
+
 const AREAS: Area[] = [
-  { name: "Tampa", x: 300, y: 210 },
-  { name: "South Tampa", x: 268, y: 250 },
-  { name: "Brandon", x: 372, y: 218 },
-  { name: "Riverview", x: 380, y: 258 },
-  { name: "Valrico", x: 400, y: 200 },
-  { name: "Lithia", x: 420, y: 250 },
-  { name: "FishHawk", x: 402, y: 278 },
-  { name: "Apollo Beach", x: 340, y: 320 },
-  { name: "Wesley Chapel", x: 320, y: 90 },
-  { name: "Lutz", x: 280, y: 140 },
-  { name: "Plant City", x: 460, y: 190 },
-  { name: "Pinellas County", x: 190, y: 260 },
-  { name: "Pasco County", x: 260, y: 60 },
-  { name: "Polk County", x: 470, y: 240 },
-  { name: "Manatee County", x: 300, y: 380 },
+  { name: "Tampa", lat: 27.9506, lng: -82.4572, hq: true },
+  { name: "South Tampa", lat: 27.9161, lng: -82.4907 },
+  { name: "Brandon", lat: 27.9378, lng: -82.2859 },
+  { name: "Riverview", lat: 27.8663, lng: -82.3254 },
+  { name: "Valrico", lat: 27.9378, lng: -82.2359 },
+  { name: "Lithia", lat: 27.8747, lng: -82.2081 },
+  { name: "FishHawk", lat: 27.8467, lng: -82.2118 },
+  { name: "Apollo Beach", lat: 27.7712, lng: -82.4046 },
+  { name: "Wesley Chapel", lat: 28.1994, lng: -82.3223 },
+  { name: "Lutz", lat: 28.1494, lng: -82.4587 },
+  { name: "Plant City", lat: 28.0186, lng: -82.1121 },
+  { name: "Pinellas County", lat: 27.9659, lng: -82.8001 },
+  { name: "Pasco County", lat: 28.3467, lng: -82.3315 },
+  { name: "Polk County", lat: 28.0395, lng: -81.9498 },
+  { name: "Manatee County", lat: 27.4989, lng: -82.5748 },
 ];
 
-/* Stylized Tampa Bay coastline. Not survey-accurate; a legible, brand-appropriate
-   abstraction of the peninsula and bay for orientation, not navigation. */
-const COASTLINE =
-  "M120,20 C160,10 210,30 230,70 C245,100 220,120 235,150 C255,180 210,190 220,220 C230,250 260,260 245,300 C232,335 190,340 200,380 C208,415 170,440 150,470 L60,470 C30,430 40,380 25,340 C10,300 30,260 20,220 C10,180 35,140 30,100 C25,60 80,30 120,20 Z";
+function FlyController({ selected }: { selected: string | null }) {
+  const map = useMap();
 
-const BAY = "M235,150 C255,175 250,215 225,235 C205,250 195,225 210,200 C220,180 225,165 235,150 Z";
+  useEffect(() => {
+    const area = selected ? AREAS.find((a) => a.name === selected) : null;
+    if (area) {
+      map.flyTo([area.lat, area.lng], FOCUS_ZOOM, { duration: 0.8 });
+    } else {
+      map.flyTo(TAMPA, OVERVIEW_ZOOM, { duration: 0.8 });
+    }
+  }, [selected, map]);
+
+  return null;
+}
+
+function ResetOnBackgroundClick({ onReset }: { onReset: () => void }) {
+  useMapEvents({
+    click: () => onReset(),
+  });
+  return null;
+}
 
 export default function ServiceAreaMap() {
-  const [active, setActive] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+  const [selected, setSelected] = useState<string | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className="aspect-[4/3] w-full border border-border bg-surface md:aspect-[16/10]" />;
+  }
 
   return (
-    <div className="relative w-full">
-      <svg
-        viewBox="0 0 500 500"
-        className="h-auto w-full"
-        role="img"
-        aria-label="Map of LERTIV's Tampa Bay and Central Florida service area"
+    <div className="relative aspect-[4/3] w-full overflow-hidden border border-border md:aspect-[16/10]">
+      <MapContainer
+        center={TAMPA}
+        zoom={OVERVIEW_ZOOM}
+        scrollWheelZoom={false}
+        dragging={false}
+        doubleClickZoom={false}
+        touchZoom={false}
+        keyboard={false}
+        zoomControl={false}
+        attributionControl={false}
+        style={{ height: "100%", width: "100%", background: "var(--surface)" }}
       >
-        <path
-          d={COASTLINE}
-          fill="var(--surface)"
-          stroke="var(--border)"
-          strokeWidth="1.5"
-        />
-        <path d={BAY} fill="var(--background)" stroke="var(--border)" strokeWidth="1" />
+        <TileLayer url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png" />
+        <FlyController selected={selected} />
+        <ResetOnBackgroundClick onReset={() => setSelected(null)} />
 
         {AREAS.map((area) => {
-          const isActive = active === area.name;
-          const flip = area.x > 390;
+          const isSelected = selected === area.name;
+          const showLabel = !selected || isSelected;
+
           return (
-            <g
+            <CircleMarker
               key={area.name}
-              onMouseEnter={() => setActive(area.name)}
-              onMouseLeave={() => setActive(null)}
-              className="cursor-pointer"
+              center={[area.lat, area.lng]}
+              radius={area.hq ? 7 : 5}
+              pathOptions={{
+                color: "var(--accent)",
+                fillColor: "var(--accent)",
+                fillOpacity: area.hq || isSelected ? 1 : 0.85,
+                weight: area.hq || isSelected ? 2 : 1.5,
+              }}
+              eventHandlers={{
+                click: (e) => {
+                  L.DomEvent.stopPropagation(e);
+                  setSelected((prev) => (prev === area.name ? null : area.name));
+                },
+              }}
             >
-              <circle cx={area.x} cy={area.y} r={22} fill="transparent" />
-              <motion.circle
-                cx={area.x}
-                cy={area.y}
-                r={isActive ? 6 : 4}
-                fill="var(--accent)"
-                animate={{ r: isActive ? 6 : 4 }}
-                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              />
-              {isActive && (
-                <motion.circle
-                  cx={area.x}
-                  cy={area.y}
-                  r={4}
-                  fill="none"
-                  stroke="var(--accent)"
-                  strokeWidth="1"
-                  initial={{ r: 4, opacity: 0.6 }}
-                  animate={{ r: 16, opacity: 0 }}
-                  transition={{ duration: 1, repeat: Infinity, ease: "easeOut" }}
-                />
+              {showLabel && (
+                <Tooltip
+                  permanent
+                  direction="right"
+                  offset={[8, 0]}
+                  className="!rounded-none !border-none !bg-surface/90 !px-2 !py-0.5 !font-mono !text-[10px] !text-text-primary !shadow-none"
+                >
+                  {area.hq ? "LERTIV / TAMPA" : area.name}
+                </Tooltip>
               )}
-              <motion.text
-                x={flip ? area.x - 10 : area.x + 10}
-                y={area.y + 4}
-                textAnchor={flip ? "end" : "start"}
-                fontSize={isActive ? 12 : 10}
-                fontFamily="var(--font-mono, monospace)"
-                fill={isActive ? "var(--text-primary)" : "var(--text-secondary)"}
-                animate={{ fontSize: isActive ? 12 : 10 }}
-                transition={{ duration: 0.2 }}
-              >
-                {area.name}
-              </motion.text>
-            </g>
+            </CircleMarker>
           );
         })}
-      </svg>
+      </MapContainer>
     </div>
   );
 }
