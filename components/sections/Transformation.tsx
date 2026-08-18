@@ -12,17 +12,17 @@ export default function Transformation() {
           </p>
           <SplitReveal
             as="h2"
-            text="Same *dirt.* Different *result.*"
+            text="Same *lot.* Different *life.*"
             className="font-display mt-4 text-center text-4xl leading-[1.05] text-text-primary md:text-5xl"
           />
         </Reveal>
 
         <Reveal delay={0.1}>
           <BeforeAfterSlider
-            beforeSrc="/images/paver-install-before.jpg"
-            afterSrc="/images/patio-pool-kitchen.jpg"
-            beforeAlt="Paver installation in progress"
-            afterAlt="Finished paver patio and outdoor kitchen"
+            beforeSrc="/images/riverview-before.jpg"
+            afterSrc="/images/riverview-after.jpg"
+            beforeAlt="Riverview backyard before renovation"
+            afterAlt="Riverview backyard after paver deck and outdoor kitchen renovation"
             className="mt-14 aspect-[4/3] w-full md:aspect-[16/10]"
           />
         </Reveal>

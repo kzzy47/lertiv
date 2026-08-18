@@ -105,8 +105,7 @@ export default function Contact() {
               Submit Request
             </MagneticButton>
             <p className="text-xs text-text-muted">
-              Form submission and lead routing will connect to CRM in the
-              next phase.
+              We typically respond within one business day.
             </p>
           </form>
         </Reveal>

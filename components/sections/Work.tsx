@@ -26,8 +26,8 @@ export default function Work() {
               </h2>
             </div>
             <p className="max-w-sm text-sm text-text-secondary">
-              A sample of recent residential and commercial builds. Full
-              before-and-after case studies coming soon.
+              A sample of recent residential and commercial builds across
+              Tampa Bay.
             </p>
           </div>
         </Reveal>
