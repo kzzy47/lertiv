@@ -29,7 +29,7 @@ export default function Header() {
       className={`fixed top-0 z-50 w-full transition-colors duration-300 ${
         dark
           ? "border-b border-border bg-background/95 backdrop-blur-md"
-          : "border-b border-transparent bg-gradient-to-b from-black/55 via-black/15 to-transparent"
+          : "border-b border-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:h-20 md:px-10">
