@@ -73,7 +73,17 @@ export default function Footer() {
       <div className="border-t border-on-forest-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6 text-xs text-on-forest-secondary/70 md:flex-row md:items-center md:justify-between md:px-10">
           <p>&copy; {new Date().getFullYear()} LERTIV. All rights reserved.</p>
-          <p>Founded 2011 &middot; Hillsborough County, FL</p>
+          <p>
+            Founded 2011 &middot; Hillsborough County, FL &middot; Built by{" "}
+            <a
+              href="https://vaylostudios.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-on-forest underline underline-offset-4 hover:text-on-forest-secondary"
+            >
+              Vaylo Studios
+            </a>
+          </p>
         </div>
       </div>
     </footer>
