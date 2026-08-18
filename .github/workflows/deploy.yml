@@ -1,0 +1,16 @@
+name: Trigger Site Grid redeploy
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Railway redeploy of site-grid-app
+        run: |
+          curl -sf -X POST https://backboard.railway.app/graphql/v2 \
+            -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"query":"mutation { serviceInstanceRedeploy(serviceId: \"998edf6a-6866-46ab-855c-32865b17604d\", environmentId: \"d06e1a8f-0c26-4f14-848a-66bcf02bc1aa\") }"}'
