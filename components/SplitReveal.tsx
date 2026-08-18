@@ -19,6 +19,27 @@ export default function SplitReveal({
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px", amount: 0 });
   const words = text.split(" ");
+  const reduced = useRef(
+    typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+
+  if (reduced.current) {
+    return (
+      <Tag className={className}>
+        {words.map((word, i) => {
+          const italic = word.startsWith("*") && word.endsWith("*") && word.length > 1;
+          const clean = italic ? word.slice(1, -1) : word;
+          return (
+            <span key={i}>
+              {italic ? <em className="italic">{clean}</em> : clean}
+              {i < words.length - 1 ? " " : ""}
+            </span>
+          );
+        })}
+      </Tag>
+    );
+  }
 
   return (
     <Tag ref={ref as never} className={className}>

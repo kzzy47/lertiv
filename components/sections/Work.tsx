@@ -1,5 +1,6 @@
 import Reveal from "@/components/Reveal";
 import PlaceholderPhoto from "@/components/PlaceholderPhoto";
+import CursorLabel from "@/components/CursorLabel";
 
 const PROJECTS = [
   { title: "Riverview Backyard Transformation", tag: "Pavers & Kitchen", src: "/images/pergola-outdoor-kitchen.jpg", wide: true },
@@ -39,12 +40,14 @@ export default function Work() {
               className={project.wide ? "sm:col-span-2" : undefined}
             >
               <div className="group">
-                <PlaceholderPhoto
-                  label={project.tag}
-                  src={project.src}
-                  alt={project.title}
-                  className={`w-full transition-colors group-hover:border-border-hover ${project.wide ? "aspect-[16/9]" : "aspect-[4/3]"}`}
-                />
+                <CursorLabel label="View Project">
+                  <PlaceholderPhoto
+                    label={project.tag}
+                    src={project.src}
+                    alt={project.title}
+                    className={`w-full transition-colors group-hover:border-border-hover ${project.wide ? "aspect-[16/9]" : "aspect-[4/3]"}`}
+                  />
+                </CursorLabel>
                 <div className="mt-4 flex items-baseline justify-between gap-3">
                   <p className="font-display text-lg text-text-primary">
                     {project.title}
