@@ -15,7 +15,7 @@ export default function About() {
               className="aspect-[4/5] w-full"
               objectPosition="75% center"
             />
-            <div className="absolute -bottom-6 left-6 border border-border bg-surface-elevated px-5 py-4">
+            <div className="absolute -bottom-6 left-6 border border-border bg-surface-elevated/80 px-5 py-4 shadow-lg backdrop-blur-md">
               <p className="font-display text-2xl text-text-primary">Est. 2011</p>
               <p className="mt-0.5 text-xs text-text-muted">Hillsborough County, FL</p>
             </div>
