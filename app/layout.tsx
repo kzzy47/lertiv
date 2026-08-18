@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Fraunces, Public_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
+import GrainOverlay from "@/components/GrainOverlay";
+import Preloader from "@/components/Preloader";
+import CursorSpotlight from "@/components/CursorSpotlight";
 
 const fraunces = Fraunces({
   variable: "--font-serif",
@@ -33,7 +37,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${fraunces.variable} ${publicSans.variable} ${plexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Preloader />
+        <GrainOverlay />
+        <CursorSpotlight />
+        <SmoothScroll />
+        {children}
+      </body>
     </html>
   );
 }

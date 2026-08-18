@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import MagneticButton from "@/components/MagneticButton";
 
 const NAV_LINKS = [
   { label: "Services", href: "#services" },
@@ -60,8 +61,9 @@ export default function Header() {
           ))}
         </nav>
 
-        <a
+        <MagneticButton
           href="#contact"
+          strength={0.2}
           className={`hidden text-xs font-medium uppercase tracking-[0.1em] transition-colors md:inline-block ${
             dark
               ? "border-b border-accent pb-1 text-text-primary hover:border-text-primary"
@@ -69,7 +71,7 @@ export default function Header() {
           }`}
         >
           Request an Estimate
-        </a>
+        </MagneticButton>
 
         <button
           type="button"

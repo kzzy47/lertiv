@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import SplitReveal from "@/components/SplitReveal";
+import TiltCard from "@/components/TiltCard";
 
 const SERVICES = [
   {
@@ -42,15 +44,17 @@ export default function Services() {
           <p className="font-mono-label text-[11px] text-accent">
             What We Build
           </p>
-          <h2 className="font-display mt-4 max-w-2xl text-4xl leading-[1.05] text-text-primary md:text-5xl">
-            Complete outdoor environments, not just <em className="italic">installations.</em>
-          </h2>
+          <SplitReveal
+            as="h2"
+            text="Complete outdoor environments, not just *installations.*"
+            className="font-display mt-4 max-w-2xl text-4xl leading-[1.05] text-text-primary md:text-5xl"
+          />
         </Reveal>
 
         <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service, i) => (
             <Reveal key={service.name} delay={(i % 3) * 0.06}>
-              <div className="group">
+              <TiltCard className="group" max={5}>
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={service.image}
@@ -68,7 +72,7 @@ export default function Services() {
                     {service.description}
                   </p>
                 </div>
-              </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>

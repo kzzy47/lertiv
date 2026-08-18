@@ -1,4 +1,6 @@
 import Reveal from "@/components/Reveal";
+import SplitReveal from "@/components/SplitReveal";
+import ServiceAreaMap from "@/components/ServiceAreaMap";
 
 const AREAS = [
   "Tampa",
@@ -26,23 +28,30 @@ export default function ServiceArea() {
           <p className="font-mono-label text-[11px] text-accent">
             Where We Work
           </p>
-          <h2 className="font-display mt-4 max-w-2xl text-4xl leading-[1.05] text-text-primary md:text-5xl">
-            Tampa Bay and <em className="italic">Central Florida.</em>
-          </h2>
+          <SplitReveal
+            as="h2"
+            text="Tampa Bay and *Central* *Florida.*"
+            className="font-display mt-4 max-w-2xl text-4xl leading-[1.05] text-text-primary md:text-5xl"
+          />
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <div className="mt-12 flex flex-wrap gap-3">
-            {AREAS.map((area) => (
-              <span
-                key={area}
-                className="border border-border px-4 py-2 text-sm text-text-secondary transition-colors hover:border-accent hover:text-text-primary"
-              >
-                {area}
-              </span>
-            ))}
-          </div>
-        </Reveal>
+        <div className="mt-12 grid gap-10 md:grid-cols-2 md:items-center">
+          <Reveal delay={0.1}>
+            <div className="flex flex-wrap gap-3">
+              {AREAS.map((area) => (
+                <span
+                  key={area}
+                  className="border border-border px-4 py-2 text-sm text-text-secondary transition-colors hover:border-accent hover:text-text-primary"
+                >
+                  {area}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <ServiceAreaMap />
+          </Reveal>
+        </div>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import Reveal from "@/components/Reveal";
+import CountUp from "@/components/CountUp";
 
 export default function TrustBar() {
   return (
@@ -7,17 +8,21 @@ export default function TrustBar() {
         <Reveal>
           <div className="grid grid-cols-2 divide-y divide-border md:grid-cols-4 md:divide-y-0 md:divide-x">
             <div className="pb-6 pr-6 md:pb-0 md:px-8 md:first:pl-0 md:last:pr-0">
-              <p className="font-display text-3xl text-text-primary md:text-4xl">
-                2011
-              </p>
+              <CountUp
+                value={2011}
+                format={false}
+                className="font-display text-3xl text-text-primary md:text-4xl"
+              />
               <p className="mt-1 text-xs text-text-secondary md:text-sm">
                 Founded in Hillsborough County
               </p>
             </div>
             <div className="pb-6 pl-6 md:pb-0 md:px-8">
-              <p className="font-display text-3xl text-text-primary md:text-4xl">
-                60+
-              </p>
+              <CountUp
+                value={60}
+                suffix="+"
+                className="font-display text-3xl text-text-primary md:text-4xl"
+              />
               <p className="mt-1 text-xs text-text-secondary md:text-sm">
                 Employees across active crews
               </p>

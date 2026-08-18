@@ -1,5 +1,6 @@
 import Reveal from "@/components/Reveal";
 import PlaceholderPhoto from "@/components/PlaceholderPhoto";
+import SplitReveal from "@/components/SplitReveal";
 
 export default function About() {
   return (
@@ -24,9 +25,11 @@ export default function About() {
           <p className="font-mono-label text-[11px] text-accent">
             Our Story
           </p>
-          <h2 className="font-display mt-4 text-4xl leading-[1.05] text-text-primary md:text-5xl">
-            Founded on a pickup truck. <em className="italic">Built on referrals.</em>
-          </h2>
+          <SplitReveal
+            as="h2"
+            text="Founded on a pickup truck. *Built* *on* *referrals.*"
+            className="font-display mt-4 text-4xl leading-[1.05] text-text-primary md:text-5xl"
+          />
           <div className="mt-8 flex flex-col gap-4 text-sm leading-relaxed text-text-secondary md:text-base">
             <p>
               LERTIV was founded in 2011 by Adrian Veltri, a Hillsborough

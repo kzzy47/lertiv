@@ -1,4 +1,7 @@
 import Reveal from "@/components/Reveal";
+import SplitReveal from "@/components/SplitReveal";
+import MagneticButton from "@/components/MagneticButton";
+import WeatherStrip from "@/components/WeatherStrip";
 
 export default function Contact() {
   return (
@@ -8,14 +11,17 @@ export default function Contact() {
           <p className="font-mono-label text-[11px] text-[#d9a877]">
             Start a Project
           </p>
-          <h2 className="font-display mt-4 max-w-lg text-4xl leading-[1.05] text-on-forest md:text-5xl">
-            Request an <em className="italic">estimate.</em>
-          </h2>
+          <SplitReveal
+            as="h2"
+            text="Request an *estimate.*"
+            className="font-display mt-4 max-w-lg text-4xl leading-[1.05] text-on-forest md:text-5xl"
+          />
           <p className="mt-6 max-w-md text-sm leading-relaxed text-on-forest-secondary md:text-base">
             Tell us about your property and what you&rsquo;re looking to
             build. A member of the LERTIV team will follow up to schedule a
             walkthrough.
           </p>
+          <WeatherStrip className="font-mono-label mt-8 text-[11px] text-on-forest-secondary" />
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -95,9 +101,9 @@ export default function Contact() {
               />
             </div>
 
-            <button type="submit" className="btn-primary mt-2 w-fit">
+            <MagneticButton type="submit" strength={0.25} className="btn-primary mt-2 w-fit">
               Submit Request
-            </button>
+            </MagneticButton>
             <p className="text-xs text-text-muted">
               Form submission and lead routing will connect to CRM in the
               next phase.
