@@ -6,12 +6,14 @@ export default function PlaceholderPhoto({
   src,
   alt,
   priority = false,
+  objectPosition = "center",
 }: {
   label: string;
   className?: string;
   src?: string;
   alt?: string;
   priority?: boolean;
+  objectPosition?: string;
 }) {
   if (src) {
     return (
@@ -22,6 +24,7 @@ export default function PlaceholderPhoto({
           fill
           priority={priority}
           sizes="(max-width: 768px) 100vw, 50vw"
+          style={{ objectPosition }}
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent transition-opacity duration-500 group-hover:from-black/30" />

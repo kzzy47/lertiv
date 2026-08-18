@@ -10,9 +10,10 @@ export default function About() {
           <div className="relative">
             <PlaceholderPhoto
               label="Founder / Crew Photography"
-              src="/images/patio-pool-kitchen.jpg"
-              alt="Completed patio and outdoor kitchen build"
+              src="/images/founder-adrian-veltri.png"
+              alt="Adrian Veltri, founder of LERTIV, on a completed outdoor kitchen and pool project"
               className="aspect-[4/5] w-full"
+              objectPosition="75% center"
             />
             <div className="absolute -bottom-6 left-6 border border-border bg-surface-elevated px-5 py-4">
               <p className="font-display text-2xl text-text-primary">Est. 2011</p>
