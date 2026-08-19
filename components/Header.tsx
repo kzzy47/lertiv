@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 import MagneticButton from "@/components/MagneticButton";
 
 const NAV_LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Service Area", href: "#service-area" },
+  { label: "Services", href: "/#services" },
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/#about" },
+  { label: "Service Area", href: "/#service-area" },
 ];
 
 export default function Header() {
@@ -34,7 +34,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:h-20 md:px-10">
-        <Link href="#top" className="flex items-center gap-2 overflow-hidden rounded-sm">
+        <Link href="/#top" className="flex items-center gap-2 overflow-hidden rounded-sm">
           <Image
             src={dark ? "/brand/lertiv-mark-ink.png" : "/brand/lertiv-mark-paper.png"}
             alt="LERTIV"
@@ -62,7 +62,7 @@ export default function Header() {
         </nav>
 
         <MagneticButton
-          href="#contact"
+          href="/#contact"
           strength={0.2}
           className={`hidden text-xs font-medium uppercase tracking-[0.1em] transition-colors md:inline-block ${
             dark
@@ -110,7 +110,7 @@ export default function Header() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="/#contact"
               onClick={() => setOpen(false)}
               className="btn-primary mt-2 justify-center"
             >

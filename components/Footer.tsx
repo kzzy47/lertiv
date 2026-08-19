@@ -47,10 +47,10 @@ export default function Footer() {
             Company
           </p>
           <ul className="mt-4 flex flex-col gap-2.5 text-sm text-on-forest-secondary">
-            <li><a href="#about" className="hover:text-on-forest">About LERTIV</a></li>
-            <li><a href="#work" className="hover:text-on-forest">Our Work</a></li>
-            <li><a href="#service-area" className="hover:text-on-forest">Service Area</a></li>
-            <li><a href="#contact" className="hover:text-on-forest">Request an Estimate</a></li>
+            <li><a href="/#about" className="hover:text-on-forest">About LERTIV</a></li>
+            <li><a href="/#work" className="hover:text-on-forest">Our Work</a></li>
+            <li><a href="/#service-area" className="hover:text-on-forest">Service Area</a></li>
+            <li><a href="/#contact" className="hover:text-on-forest">Request an Estimate</a></li>
           </ul>
         </div>
 
@@ -62,7 +62,7 @@ export default function Footer() {
             <li>Hillsborough County, Florida</li>
             <li>Serving Tampa Bay &amp; Central Florida</li>
             <li className="pt-1">
-              <a href="#contact" className="text-on-forest underline underline-offset-4">
+              <a href="/#contact" className="text-on-forest underline underline-offset-4">
                 Start a Project
               </a>
             </li>
