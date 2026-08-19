@@ -19,7 +19,13 @@ export default function CountUp({
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const motionValue = useMotionValue(0);
-  const spring = useSpring(motionValue, { duration: 1600, bounce: 0 });
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const spring = useSpring(motionValue, {
+    duration: prefersReducedMotion ? 0 : 1600,
+    bounce: 0,
+  });
 
   useEffect(() => {
     if (inView) motionValue.set(value);

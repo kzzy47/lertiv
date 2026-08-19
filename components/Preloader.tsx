@@ -11,8 +11,11 @@ export default function Preloader() {
     if (sessionStorage.getItem("lertiv-intro-seen")) {
       return;
     }
-    setVisible(true);
     sessionStorage.setItem("lertiv-intro-seen", "1");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+    setVisible(true);
     const timer = setTimeout(() => setVisible(false), 1400);
     return () => clearTimeout(timer);
   }, []);
