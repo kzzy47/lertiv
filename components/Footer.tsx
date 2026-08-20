@@ -61,6 +61,11 @@ export default function Footer() {
           <ul className="mt-4 flex flex-col gap-2.5 text-sm text-on-forest-secondary">
             <li>Hillsborough County, Florida</li>
             <li>Serving Tampa Bay &amp; Central Florida</li>
+            <li>
+              <a href="tel:+18132392039" className="hover:text-on-forest">
+                (813) 239-2039
+              </a>
+            </li>
             <li className="pt-1">
               <a href="/#contact" className="text-on-forest underline underline-offset-4">
                 Start a Project

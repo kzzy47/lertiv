@@ -21,6 +21,12 @@ export default function Contact() {
             build. A member of the LERTIV team will follow up to schedule a
             walkthrough.
           </p>
+          <a
+            href="tel:+18132392039"
+            className="mt-6 inline-block text-lg text-on-forest transition-colors hover:text-on-forest-secondary md:text-xl"
+          >
+            (813) 239-2039
+          </a>
           <WeatherStrip className="font-mono-label mt-8 text-[11px] text-on-forest-secondary" />
         </Reveal>
 
