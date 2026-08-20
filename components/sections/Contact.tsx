@@ -54,7 +54,7 @@ export default function Contact() {
                   type="tel"
                   name="phone"
                   className="mt-2 w-full rounded-md border border-border bg-background px-4 py-3 text-sm text-text-primary outline-none transition-colors focus:border-accent"
-                  placeholder="(813) 555-0100"
+                  placeholder="(813) 239-2039"
                 />
               </div>
             </div>

@@ -36,11 +36,13 @@ export default function TrustBar() {
               </p>
             </div>
             <div className="pt-6 pl-6 md:pt-0 md:px-8 md:last:pr-0">
-              <p className="font-display text-3xl text-text-primary md:text-4xl">
-                $11M&ndash;14M
-              </p>
+              <CountUp
+                value={10}
+                suffix="+"
+                className="font-display text-3xl text-text-primary md:text-4xl"
+              />
               <p className="mt-1 text-xs text-text-secondary md:text-sm">
-                Annual revenue
+                Communities served across Tampa Bay
               </p>
             </div>
           </div>
